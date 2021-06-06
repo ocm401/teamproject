@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>팀프로젝트</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center">시급계산기</h1>
+  </div>
+  <div class="row">2021기준 시급은 8,720원입니다 <a href="http://www.minimumwage.go.kr/info/infoSigni.jsp">시급에 대해 알아보기</a></div>
+  <div class="row roundborder">
+    <div class="col-lg-1"><span>시급</span></div>
+    <div class="col-lg-2"><input type="text" class="form-control commadisplay" maxlength="6" id="money"
+        placeholder="8,720"></div>
+  </div>
+  <div class="row roundborder">
+    <div class="col-lg-1"><span>총 시간</span></div>
+    <div class="col-lg-2"><input type="text" class="form-control commadisplay" maxlength="6" id="time" placeholder="">
+    </div>
+  </div>
+  <div class="row roundborder">
+    <div class="col-lg-1"><span>야간수당</span></div>
+    <div class="col-lg-2"><input type="text" class="form-control commadisplay" maxlength="6" id="night" placeholder="">
+    </div>
+  </div>
+  <a class="btn btn-danger btn-lg" onclick="btn()">계산하기</a>
+  <p id="output" class="output"></p>
+  <div class="alert alert-primary mt-4" role="alert">
+    ex)야간수당 포함한 총시간이 100시간이라면 총시간에 100시간 야간수당에 야간시간을 넣으면 됩니다.
+  </div>
+  <div class="alert alert-warning mt-4" role="alert">
+    야간수당은 총시간에서 제외가 됩니다
+  </div>
+  <div class="alert alert-warning mt-4" role="alert">
+    추가적인것들은 업데이트 예정입니다.
+  </div>
+
+  <script>
+    function btn() {
+      var money;
+      var time;
+      var night;
+      var sum;
+      money = document.getElementById("money").value;
+      time = document.getElementById("time").value;
+      night = document.getElementById("night").value;
+      sum = (money * (time - night)) + (money * night * 1.5);
+
+      if (1 <= time && time <= 744)
+        document.getElementById("output").innerHTML = sum + "원입니다.";
+
+      else
+        document.getElementById("output").innerHTML = "총시간을 다시 입력해 주세요";
+    }</script>
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
